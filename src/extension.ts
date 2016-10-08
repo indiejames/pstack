@@ -17,6 +17,11 @@ function scrollToLocation(editor, location) {
 }
 
 function push(){
+    // truncate the lowest stack position if we have run out of room
+    if (locationStack.length == maxDepth) {
+        locationStack.shift();
+    }
+
     let editor = vscode.window.activeTextEditor;
     let uri = editor.document.uri;
     let position = editor.selection.active;

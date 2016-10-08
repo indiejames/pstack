@@ -5,6 +5,10 @@
     "version": "0.5.0",
     "publisher": "jamesnorton",
     "license": "MIT",
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/indiejames/pstack"
+    },
     "icon": "pstack.png",
     "engines": {
         "vscode": "^1.0.0"
@@ -48,8 +52,7 @@
             {
                 "command": "pstack.pop",
                 "key": "ctrl+alt+k",
-                "mac": "cmd+alt+k",
-                "when": "editorTextFocus"
+                "mac": "cmd+alt+k"
             }
         ]
         
