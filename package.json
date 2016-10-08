@@ -1,0 +1,66 @@
+{
+    "name": "pstack",
+    "displayName": "pstack",
+    "description": "Keeps a stack of file / cursor positions in a workspace. Allows the user to push positions on the stack with a key binding and to pop them off (returning them to the file / cursor position). Also provides an API to allow other extensions to push and pop positions. This is useful if you are viewing code and want to quickly jump somewhere else in the code, i.e., to a symbol definition, and then jump back to where you were.",
+    "version": "0.5.0",
+    "publisher": "jamesnorton",
+    "license": "MIT",
+    "icon": "pstack.png",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "pstack.push",
+            "title": "Push location"
+        },
+        {
+            "command": "pstack.pop",
+            "title": "Pop location"
+        }],
+
+        "configuration": {
+            "type": "object",
+            "title": "pstack configuration",
+            "properties": {
+                "pstack.maxDepth": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "Specifies the maximum number of locations to keep."
+                }
+            }
+        },
+
+        "keybindings": [
+            {
+                "command": "pstack.push",
+                "key": "ctrl+alt+j",
+                "mac": "cmd+alt+j",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "pstack.pop",
+                "key": "ctrl+alt+k",
+                "mac": "cmd+alt+k",
+                "when": "editorTextFocus"
+            }
+        ]
+        
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
+}
